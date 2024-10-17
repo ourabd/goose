@@ -1,8 +1,13 @@
-FROM debian:bookworm-slim AS base
+FROM alpine:3.18 AS base
 
-RUN apt-get update && \
-    apt-get install -y curl && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+ENV LANG=C.UTF-8 \
+    DEBIAN_FRONTEND=noninteractive
+
+RUN apk update && \
+    apk add --no-cache \
+    ca-certificates \
+    curl && \
+    rm -rf /var/cache/apk/*
 
 RUN curl -fsSL https://raw.githubusercontent.com/pressly/goose/master/install.sh | sh
 
