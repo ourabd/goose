@@ -17,4 +17,6 @@ WORKDIR /app
 
 COPY --from=base /usr/local/bin/goose /app/goose
 
-ENTRYPOINT [ "/app/goose" ]
+VOLUME ["/app/sql"]
+
+ENTRYPOINT [ "/app/goose", "--dir", "/app/sql", "mysql" ]
