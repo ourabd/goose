@@ -11,7 +11,7 @@ RUN apk update && \
 
 RUN curl -fsSL https://raw.githubusercontent.com/pressly/goose/master/install.sh | sh
 
-FROM debian:bookworm-slim
+FROM alpine:3.18
 
 WORKDIR /app
 
